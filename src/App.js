@@ -6,10 +6,11 @@ import Hero from './components/Hero';
 class App extends Component {
   render() {
     return (
-      <Container>
+      <React.Fragment>
         <Header />
         <Hero />
-      </Container>
+        <Container />
+      </React.Fragment>
     );
   }
 }
