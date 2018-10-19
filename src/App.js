@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Container from './components/Container';
+
 import Header from './components/Header';
 import Hero from './components/Hero';
+import Home from './routes/home';
 
 class App extends Component {
   render() {
@@ -9,7 +10,7 @@ class App extends Component {
       <React.Fragment>
         <Header />
         <Hero />
-        <Container />
+        <Home />
       </React.Fragment>
     );
   }
