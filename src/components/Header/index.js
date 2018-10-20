@@ -5,12 +5,17 @@ import Nav from './Nav';
 import NavItem from './NavItem';
 
 const Header = styled.header`
+  z-index: 9999;
+  position: fixed;
+  background-color: white;
+  width: 100%;
   padding-right: 40px;
   padding-left: 40px;
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
 
   .logo {
     justify-self: start;
