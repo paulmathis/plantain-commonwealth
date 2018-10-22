@@ -11,3 +11,19 @@ The Plaintain Commonwealth is a demo E-Commerce clothing store.
 - React
 - Redux
 - NodeJS
+
+## How to use
+
+Clone the repository
+
+Install node modules
+
+```
+npm install
+```
+
+Run the server
+
+```
+npm start
+```
