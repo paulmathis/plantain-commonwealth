@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Nav from './Nav';
 import NavItem from './NavItem';
+import logo from '../../assets/logo.png';
 
 const Header = styled.header`
   z-index: 9999;
@@ -16,9 +17,12 @@ const Header = styled.header`
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+  height: 60px;
+  top: 0;
 
   .logo {
     justify-self: start;
+    max-height: 60px;
   }
 
   .account {
@@ -26,6 +30,8 @@ const Header = styled.header`
     font-size: 2em;
     svg {
       margin: 0 5px 0 5px;
+      color: ${({ theme }) => theme.lightGrey};
+      cursor: pointer;
     }
   }
 `;
@@ -33,14 +39,14 @@ const Header = styled.header`
 export default () => {
   return (
     <Header>
-      <h1 className="logo">Plantain Commonwealth</h1>
+      <img className="logo" src={logo} alt="" />
       <Nav>
-        <NavItem>New Arrivals</NavItem>
-        <NavItem>Women</NavItem>
-        <NavItem>Men</NavItem>
-        <NavItem>Shoes</NavItem>
-        <NavItem>Accessories</NavItem>
-        <NavItem>Sale</NavItem>
+        <NavItem href="#">New Arrivals</NavItem>
+        <NavItem href="#">Women</NavItem>
+        <NavItem href="#">Men</NavItem>
+        <NavItem href="#">Shoes</NavItem>
+        <NavItem href="#">Accessories</NavItem>
+        <NavItem href="#">Sale</NavItem>
       </Nav>
       <div className="account">
         <FontAwesomeIcon icon="user-circle" />

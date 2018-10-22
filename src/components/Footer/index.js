@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from '../Link';
+import LinkList from './LinkList';
 
 const Footer = styled.footer`
   padding: 45px;
@@ -8,13 +10,21 @@ const Footer = styled.footer`
   grid-template-columns: 3fr repeat(3, 1fr) 2fr;
   gap: 30px;
 
-  ul {
-    list-style: none;
-    padding: 0;
+  h4 {
+    text-transform: uppercase;
+    margin-bottom: 30px;
   }
 
+  p {
+    line-height: 1.5;
+  }
   a {
-    text-decoration: none;
+    line-height: 1.8;
+  }
+
+  p,
+  a {
+    font-size: 0.9em;
   }
 `;
 
@@ -22,65 +32,35 @@ export default () => {
   return (
     <Footer>
       <div>
-        <h3>GET IN TOUCH</h3>
+        <h4>Get in touch</h4>
         <p>
-          Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or
-          call us on (+1) 96 716 6879
+          Any questions? Let us know in store at 5th floor, 379 Fake St, Austin, TX 78382 or call us
+          on (+1) 512 555 5555
         </p>
       </div>
+      <LinkList>
+        <h4>Categories</h4>
+        <Link href="#">Men</Link>
+        <Link href="#">Women</Link>
+        <Link href="#">Shoes</Link>
+        <Link href="#">Bags</Link>
+      </LinkList>
+      <LinkList>
+        <h4>Links</h4>
+        <Link href="#">Search</Link>
+        <Link href="#">About Us</Link>
+        <Link href="#">Contact Us</Link>
+        <Link href="#">Returns</Link>
+      </LinkList>
+      <LinkList>
+        <h4>Help</h4>
+        <Link href="#">Track Order</Link>
+        <Link href="#">Returns</Link>
+        <Link href="#">Shipping</Link>
+        <Link href="#">FAQs</Link>
+      </LinkList>
       <div>
-        <h3>CATEGORIES</h3>
-        <ul>
-          <li>
-            <a href="">Men</a>
-          </li>
-          <li>
-            <a href="">Men</a>
-          </li>
-          <li>
-            <a href="">Men</a>
-          </li>
-          <li>
-            <a href="">Men</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h3>LINKS</h3>
-        <ul>
-          <li>
-            <a href="">Men</a>
-          </li>
-          <li>
-            <a href="">Men</a>
-          </li>
-          <li>
-            <a href="">Men</a>
-          </li>
-          <li>
-            <a href="">Men</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h3>HELP</h3>
-        <ul>
-          <li>
-            <a href="">Men</a>
-          </li>
-          <li>
-            <a href="">Men</a>
-          </li>
-          <li>
-            <a href="">Men</a>
-          </li>
-          <li>
-            <a href="">Men</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h3>NEWSLETTER</h3>
+        <h4>Newsletter</h4>
       </div>
     </Footer>
   );

@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import shirt from '../../../assets/shirt.jpg';
+import Link from '../../../components/Link';
 
 const Product = styled.div`
   & > div {
     position: relative;
+    margin-bottom: 20px;
     & > div {
       position: absolute;
       top: 0;
@@ -22,21 +23,26 @@ const Product = styled.div`
 
   img {
     width: 100%;
-    height: 100%;
+    height: 360px;
     object-fit: cover;
+  }
+
+  p {
+    margin-top: 5px;
+    font-size: 1.2em;
   }
 `;
 
-export default () => {
+export default (props) => {
   return (
     <Product>
       <div>
-        <img src={shirt} alt="" />
+        <img src={props.img} alt="" />
         <div />
       </div>
       <div>
-        <p>Shirt</p>
-        <p>$20.00</p>
+        <Link href="#">{props.name}</Link>
+        <p>{props.price}</p>
       </div>
     </Product>
   );
