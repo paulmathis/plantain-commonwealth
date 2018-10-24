@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Nav from './Nav';
-import NavItem from './NavItem';
-import logo from '../../assets/logo.png';
+import React from "react";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Nav from "./Nav";
+import NavItem from "./NavItem";
+import logo from "../../assets/logo.png";
 
 const Header = styled.header`
   z-index: 9999;
@@ -28,11 +28,29 @@ const Header = styled.header`
   .account {
     justify-self: end;
     font-size: 2em;
+    position: relative;
     svg {
       margin: 0 5px 0 5px;
       color: ${({ theme }) => theme.lightGrey};
       cursor: pointer;
     }
+  }
+
+  span {
+    height: 17px;
+    width: 17px;
+    background-color: #333;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 0.3em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
   }
 `;
 
@@ -51,6 +69,7 @@ export default () => {
       <div className="account">
         <FontAwesomeIcon icon="user-circle" />
         <FontAwesomeIcon icon="shopping-bag" />
+        <span>2</span>
       </div>
     </Header>
   );
