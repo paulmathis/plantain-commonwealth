@@ -26,11 +26,9 @@ const Category = styled.div`
   }
 `;
 
-export default (props) => {
-  return (
-    <Category>
-      <img src={props.img} />
-      <Button>{props.name}</Button>
-    </Category>
-  );
-};
+export default ({ img, name }) => (
+  <Category>
+    <img src={img} alt={name} />
+    <Button>{name}</Button>
+  </Category>
+);

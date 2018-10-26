@@ -18,9 +18,8 @@ export default styled.button`
     background-color: ${({ theme }) => theme.orange};
   }
 
-  ${(props) =>
-    props.round &&
-    css`
+  ${props => props.round
+    && css`
       border-radius: 30px;
     `};
 `;

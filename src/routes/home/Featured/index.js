@@ -19,14 +19,12 @@ const Grid = styled.div`
   }
 `;
 
-export default () => {
-  return (
-    <Grid>
-      <h1>FEATURED PRODUCTS</h1>
-      <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-      <Product img={shirtGrey} name="Grey T-Shirt" price="$19.99" />
-      <Product img={shirtBlue} name="Blue T-Shirt" price="$19.99" />
-      <Product img={shirtPurple} name="Purple T-Shirt" price="$19.99" />
-    </Grid>
-  );
-};
+export default () => (
+  <Grid>
+    <h1>FEATURED PRODUCTS</h1>
+    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
+    <Product img={shirtGrey} name="Grey T-Shirt" price="$19.99" />
+    <Product img={shirtBlue} name="Blue T-Shirt" price="$19.99" />
+    <Product img={shirtPurple} name="Purple T-Shirt" price="$19.99" />
+  </Grid>
+);

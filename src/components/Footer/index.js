@@ -28,40 +28,36 @@ const Footer = styled.footer`
   }
 `;
 
-export default () => {
-  return (
-    <Footer>
-      <div>
-        <h4>Get in touch</h4>
-        <p>
-          Any questions? Let us know in store at 5th floor, 379 Fake St, Austin, TX 78382 or call us
-          on (+1) 512 555 5555
-        </p>
-      </div>
-      <LinkList>
-        <h4>Categories</h4>
-        <Link href="#">Men</Link>
-        <Link href="#">Women</Link>
-        <Link href="#">Shoes</Link>
-        <Link href="#">Bags</Link>
-      </LinkList>
-      <LinkList>
-        <h4>Links</h4>
-        <Link href="#">Search</Link>
-        <Link href="#">About Us</Link>
-        <Link href="#">Contact Us</Link>
-        <Link href="#">Returns</Link>
-      </LinkList>
-      <LinkList>
-        <h4>Help</h4>
-        <Link href="#">Track Order</Link>
-        <Link href="#">Returns</Link>
-        <Link href="#">Shipping</Link>
-        <Link href="#">FAQs</Link>
-      </LinkList>
-      <div>
-        <h4>Newsletter</h4>
-      </div>
-    </Footer>
-  );
-};
+export default () => (
+  <Footer>
+    <div>
+      <h4>Get in touch</h4>
+      { /* eslint-disable-next-line max-len */ }
+      <p>Any questions? Let us know in store at 5th floor, 379 Fake St, Austin, TX 78382 or call us on (+1) 512 555 5555</p>
+    </div>
+    <LinkList>
+      <h4>Categories</h4>
+      <Link href="/">Men</Link>
+      <Link href="/">Women</Link>
+      <Link href="/">Shoes</Link>
+      <Link href="/">Bags</Link>
+    </LinkList>
+    <LinkList>
+      <h4>Links</h4>
+      <Link href="/">Search</Link>
+      <Link href="/">About Us</Link>
+      <Link href="/">Contact Us</Link>
+      <Link href="/">Returns</Link>
+    </LinkList>
+    <LinkList>
+      <h4>Help</h4>
+      <Link href="/">Track Order</Link>
+      <Link href="/">Returns</Link>
+      <Link href="/">Shipping</Link>
+      <Link href="/">FAQs</Link>
+    </LinkList>
+    <div>
+      <h4>Newsletter</h4>
+    </div>
+  </Footer>
+);

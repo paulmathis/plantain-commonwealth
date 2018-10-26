@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -14,23 +14,17 @@ const theme = {
   lightGrey: '#666',
 };
 
-class App extends Component {
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <React.Fragment>
-          <Header />
-          <Hero>
-            <h2>Women Collection 2018</h2>
-            <h1>NEW ARRIVALS</h1>
-            <Button round>Shop Now</Button>
-          </Hero>
-          <Home />
-          <Footer />
-        </React.Fragment>
-      </ThemeProvider>
-    );
-  }
-}
-
-export default App;
+export default () => (
+  <ThemeProvider theme={theme}>
+    <React.Fragment>
+      <Header />
+      <Hero>
+        <h2>Women Collection 2018</h2>
+        <h1>NEW ARRIVALS</h1>
+        <Button round>Shop Now</Button>
+      </Hero>
+      <Home />
+      <Footer />
+    </React.Fragment>
+  </ThemeProvider>
+);

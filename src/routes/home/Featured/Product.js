@@ -33,17 +33,15 @@ const Product = styled.div`
   }
 `;
 
-export default (props) => {
-  return (
-    <Product>
-      <div>
-        <img src={props.img} alt="" />
-        <div />
-      </div>
-      <div>
-        <Link href="#">{props.name}</Link>
-        <p>{props.price}</p>
-      </div>
-    </Product>
-  );
-};
+export default ({ img, name, price }) => (
+  <Product>
+    <div>
+      <img src={img} alt="" />
+      <div />
+    </div>
+    <div>
+      <Link href="/">{name}</Link>
+      <p>{price}</p>
+    </div>
+  </Product>
+);
