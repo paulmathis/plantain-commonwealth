@@ -12,5 +12,7 @@ const Logo = styled(Link)`
 `;
 
 export default () => (
-  <Logo to="/"><img src={logo} alt="" /></Logo>
+  <Logo to="/">
+    <img src={logo} alt="" />
+  </Logo>
 );
