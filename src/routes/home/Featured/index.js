@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import Product from './Product';
+import Product from '../../../components/Product';
 import shirtGreen from '../../../assets/green-t-shirt.jpg';
 import shirtGrey from '../../../assets/grey-t-shirt.jpg';
 import shirtBlue from '../../../assets/blue-t-shirt.jpg';

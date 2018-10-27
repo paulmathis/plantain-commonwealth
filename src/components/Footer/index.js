@@ -32,8 +32,10 @@ export default () => (
   <Footer>
     <div>
       <h4>Get in touch</h4>
-      {/* prettier-ignore */}
-      <p>Any questions? Let us know in store at 5th floor, 379 Fake St, Austin, TX 78382 or call us on (+1) 512 555 5555</p>
+      <p>
+        Any questions? Let us know in store at 5th floor, 379 Fake St, Austin, TX 78382 or call us
+        on (+1) 512 555 5555
+      </p>
     </div>
     <LinkList>
       <h4>Categories</h4>

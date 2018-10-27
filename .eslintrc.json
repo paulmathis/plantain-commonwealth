@@ -3,7 +3,8 @@
   "rules": {
     "linebreak-style": "off",
     "react/jsx-filename-extension": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "react/jsx-one-expression-per-line": "off"
   },
   "env": {
     "browser": true
