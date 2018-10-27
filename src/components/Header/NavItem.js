@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
+import { Link } from 'react-router-dom';
 
-export default styled.a`
+export default styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.black};
   border-bottom: 1px solid transparent;

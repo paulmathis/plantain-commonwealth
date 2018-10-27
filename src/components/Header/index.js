@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Nav from './Nav';
 import NavItem from './NavItem';
-import logo from '../../assets/logo.png';
+import Logo from './Logo';
 
 const Header = styled.header`
   z-index: 9999;
@@ -56,14 +56,14 @@ const Header = styled.header`
 
 export default () => (
   <Header>
-    <img className="logo" src={logo} alt="" />
+    <Logo />
     <Nav>
-      <NavItem href="#">New Arrivals</NavItem>
-      <NavItem href="#">Women</NavItem>
-      <NavItem href="#">Men</NavItem>
-      <NavItem href="#">Shoes</NavItem>
-      <NavItem href="#">Accessories</NavItem>
-      <NavItem href="#">Sale</NavItem>
+      <NavItem to="/">New Arrivals</NavItem>
+      <NavItem to="/women">Women</NavItem>
+      <NavItem to="/men">Men</NavItem>
+      <NavItem to="/shoes">Shoes</NavItem>
+      <NavItem to="/accessories">Accessories</NavItem>
+      <NavItem to="/sale">Sale</NavItem>
     </Nav>
     <div className="account">
       <FontAwesomeIcon icon="user-circle" />

@@ -1,10 +1,10 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components/macro';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Home from './routes/home';
+import Home from './routes/Home';
+import Men from './routes/Men';
 import Footer from './components/Footer';
-import Button from './components/Button';
 
 const theme = {
   orange: '#e65540',
@@ -16,15 +16,13 @@ const theme = {
 
 export default () => (
   <ThemeProvider theme={theme}>
-    <React.Fragment>
-      <Header />
-      <Hero>
-        <h2>Women Collection 2018</h2>
-        <h1>NEW ARRIVALS</h1>
-        <Button round>Shop Now</Button>
-      </Hero>
-      <Home />
-      <Footer />
-    </React.Fragment>
+    <Router>
+      <React.Fragment>
+        <Header />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/men" component={Men} />
+        <Footer />
+      </React.Fragment>
+    </Router>
   </ThemeProvider>
 );
