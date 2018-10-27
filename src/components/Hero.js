@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import hero from '../assets/hero.jpg';
 
 export default styled.section`

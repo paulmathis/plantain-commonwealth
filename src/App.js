@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components/macro';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Home from './routes/home';

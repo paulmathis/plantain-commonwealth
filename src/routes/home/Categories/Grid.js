@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export default styled.section`
   padding: 40px 0 40px 0;
