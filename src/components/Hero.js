@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 export default styled.section`
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(${props => props.src});
   background-size: cover;
+  background-position: center;
   width: 100%;
   display: flex;
   flex-direction: column;

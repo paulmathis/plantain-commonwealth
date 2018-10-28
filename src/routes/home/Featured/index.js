@@ -7,11 +7,10 @@ import shirtBlue from '../../../assets/blue-t-shirt.jpg';
 import shirtPurple from '../../../assets/purple-t-shirt.jpg';
 
 const Grid = styled.div`
-  padding: 40px 0 40px 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 30px;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto 420px;
   justify-items: center;
 
   h1 {

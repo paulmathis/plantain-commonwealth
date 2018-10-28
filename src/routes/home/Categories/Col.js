@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro';
 
 export default styled.div`
-  max-height: 800px;
   display: grid;
   grid-gap: 30px;
 

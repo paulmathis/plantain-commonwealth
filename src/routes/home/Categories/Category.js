@@ -15,7 +15,6 @@ const Category = styled.div`
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s;
-    position: absolute;
   }
 
   button {

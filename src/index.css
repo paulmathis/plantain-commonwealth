@@ -11,3 +11,9 @@ ul {
   padding: 0px;
   box-sizing: border-box;
 }
+
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 55px;
+}

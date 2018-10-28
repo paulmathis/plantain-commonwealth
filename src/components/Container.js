@@ -7,4 +7,6 @@ export default styled.div`
   margin-right: auto;
   margin-left: auto;
   max-width: 1200px;
+  display: grid;
+  grid-gap: 55px;
 `;

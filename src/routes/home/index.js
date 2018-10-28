@@ -4,7 +4,7 @@ import Button from '../../components/Button';
 import Container from '../../components/Container';
 import Categories from './Categories';
 import Featured from './Featured';
-import hero from '../../assets/hero.jpg';
+import hero from '../../assets/hero-home.jpg';
 
 export default () => (
   <React.Fragment>

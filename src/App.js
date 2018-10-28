@@ -19,12 +19,12 @@ const theme = {
 export default () => (
   <ThemeProvider theme={theme}>
     <Router>
-      <React.Fragment>
+      <div className="app-container">
         <Header />
         <Route exact path="/" component={Home} />
         <Route exact path="/men" component={Men} />
         <Footer />
-      </React.Fragment>
+      </div>
     </Router>
   </ThemeProvider>
 );
