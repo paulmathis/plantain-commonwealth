@@ -15,7 +15,7 @@ export default styled.button`
 
   &:hover {
     color: white;
-    background-color: ${({ theme }) => theme.orange};
+    background-color: ${({ theme }) => theme.brandPrimary};
   }
 
   ${props =>

@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro';
 
 export default styled.a`
-  color: #555;
+  color: ${({ theme }) => theme.grey};
   text-decoration: none;
 
   :hover {
-    color: #e65540;
+    color: ${({ theme }) => theme.brandPrimary};
   }
 `;

@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Container from '../../components/Container';
+import Container from '../../../components/Container';
 import Products from './Products';
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
+  grid-gap: 30px;
 `;
 
 export default () => (

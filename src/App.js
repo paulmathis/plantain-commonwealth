@@ -12,6 +12,8 @@ const theme = {
   darkBlack: '#222',
   grey: '#555',
   lightGrey: '#666',
+  extraLightGrey: '#888',
+  brandPrimary: '#e65540',
 };
 
 export default () => (
