@@ -8,13 +8,16 @@ import shirtPurple from '../../../assets/purple-t-shirt.jpg';
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 270px));
+  grid-template-rows: auto auto;
+  grid-auto-rows: 0px;
   grid-gap: 30px;
-  grid-template-rows: auto 420px;
+  justify-content: center;
   justify-items: center;
+  overflow: hidden;
 
   h1 {
-    grid-column: span 4;
+    grid-column: 1/-1;
   }
 `;
 
