@@ -6,6 +6,30 @@ const sizes = {
   phone: 576,
 };
 
+export function desktop(input) {
+  return css`
+    @media (max-width: 992px) {
+      ${input};
+    }
+  `;
+}
+
+export function tablet(input) {
+  return css`
+    @media (max-width: 768px) {
+      ${input};
+    }
+  `;
+}
+
+export function phone(input) {
+  return css`
+    @media (max-width: 576px) {
+      ${input};
+    }
+  `;
+}
+
 // Iterate through the sizes and create a media template
 export default Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`

@@ -5,7 +5,7 @@ import { css } from 'styled-components';
 import Nav from './Nav';
 import NavItem from './NavItem';
 import Logo from './Logo';
-import mediaQueries from '../../util/mediaQueries';
+import { desktop } from '../../util/mediaQueries';
 
 const Header = styled.header`
   z-index: 9999;
@@ -63,7 +63,7 @@ const Header = styled.header`
     display: none;
   }
 
-  ${mediaQueries.desktop(css`
+  ${desktop(css`
     /* padding: 0 20px 0 20px; */
     padding: 0;
     grid-template-columns: auto auto;

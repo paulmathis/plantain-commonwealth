@@ -1,5 +1,5 @@
-import styled from 'styled-components/macro';
-import mediaQueries from '../../../util/mediaQueries';
+import styled, { css } from 'styled-components/macro';
+import { desktop } from '../../../util/mediaQueries';
 
 export default styled.section`
   max-height: 800px;
@@ -7,9 +7,9 @@ export default styled.section`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
 
-  ${mediaQueries.desktop`
+  ${desktop(css`
     grid-template-columns: minmax(auto, 500px);
     max-height: 100%;
     justify-content: center;
-  `};
+  `)};
 `;

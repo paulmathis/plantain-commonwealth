@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 import { css } from 'styled-components';
-import mediaQueries from '../util/mediaQueries';
+import { desktop } from '../util/mediaQueries';
 
 export default styled.section`
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(${props => props.src});
@@ -28,7 +28,7 @@ export default styled.section`
     margin-top: 42px;
   }
 
-  ${mediaQueries.desktop(css`
+  ${desktop(css`
     height: ${props => (props.small ? '300px' : '470px')};
   `)};
 `;
