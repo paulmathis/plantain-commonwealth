@@ -1,25 +1,25 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import Container from '../../../components/Container';
 import Products from './Products';
 
+import Sidebar from './Sidebar';
+import { phone } from '../../../util/mediaQueries';
+
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: minmax(200px, 2fr) minmax(auto, 7fr);
   grid-gap: 30px;
+
+  ${phone(css`
+    grid-template-columns: 1fr;
+  `)};
 `;
 
 export default () => (
   <Container>
     <Grid>
-      <div>
-        <h3>Categories</h3>
-        <a href="/">Tees</a>
-        <a href="/">Shirts</a>
-        <a href="/">Suits</a>
-        <a href="/">Pants</a>
-        <a href="/">Shorts</a>
-      </div>
+      <Sidebar />
       <Products />
     </Grid>
   </Container>

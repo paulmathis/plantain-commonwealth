@@ -56,7 +56,7 @@ export default ({ img, name, price }) => (
       </Button>
     </div>
     <div>
-      <Link href="/">{name}</Link>
+      <Link to="/">{name}</Link>
       <p>{price}</p>
     </div>
   </Product>

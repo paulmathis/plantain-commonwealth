@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
+import { Link } from 'react-router-dom';
 
-export default styled.a`
+export default styled(Link)`
   color: ${({ theme }) => theme.grey};
   text-decoration: none;
 

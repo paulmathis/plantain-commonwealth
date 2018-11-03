@@ -39,24 +39,24 @@ export default () => (
     </div>
     <LinkList>
       <h4>Categories</h4>
-      <Link href="/">Men</Link>
-      <Link href="/">Women</Link>
-      <Link href="/">Shoes</Link>
-      <Link href="/">Bags</Link>
+      <Link to="/">Men</Link>
+      <Link to="/">Women</Link>
+      <Link to="/">Shoes</Link>
+      <Link to="/">Bags</Link>
     </LinkList>
     <LinkList>
       <h4>Links</h4>
-      <Link href="/">Search</Link>
-      <Link href="/">About Us</Link>
-      <Link href="/">Contact Us</Link>
-      <Link href="/">Returns</Link>
+      <Link to="/">Search</Link>
+      <Link to="/">About Us</Link>
+      <Link to="/">Contact Us</Link>
+      <Link to="/">Returns</Link>
     </LinkList>
     <LinkList>
       <h4>Help</h4>
-      <Link href="/">Track Order</Link>
-      <Link href="/">Returns</Link>
-      <Link href="/">Shipping</Link>
-      <Link href="/">FAQs</Link>
+      <Link to="/">Track Order</Link>
+      <Link to="/">Returns</Link>
+      <Link to="/">Shipping</Link>
+      <Link to="/">FAQs</Link>
     </LinkList>
     <div>
       <h4>Newsletter</h4>

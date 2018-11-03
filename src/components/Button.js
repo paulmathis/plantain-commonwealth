@@ -30,4 +30,12 @@ export default styled.button`
       background-color: black;
       color: white;
     `};
+
+  ${props =>
+    props.small &&
+    css`
+      width: 70px;
+      height: 30px;
+      font-size: 1em;
+    `};
 `;

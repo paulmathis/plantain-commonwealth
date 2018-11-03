@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { css } from 'styled-components';
 import Nav from './Nav';
 import NavItem from './NavItem';
 import Logo from './Logo';

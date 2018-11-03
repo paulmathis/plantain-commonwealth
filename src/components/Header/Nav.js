@@ -1,5 +1,4 @@
-import { css } from 'styled-components';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import { desktop } from '../../util/mediaQueries';
 
 export default styled.nav`
