@@ -4,6 +4,8 @@
   "description": "The Plaintain Commonwealth is a demo E-Commerce clothing store.",
   "main": "index.js",
   "scripts": {
+    "dev": "concurrently \"npm run server\" \"cd client && npm start\"",
+    "server": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format-client": "prettier --write client/src/**/*.{html,css,js,json}",
     "format-server": "prettier --write server/**/*.{html,css,js,json}",
@@ -30,7 +32,8 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "eslint": "^5.8.0",
+    "concurrently": "^4.0.1",
+    "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.1.0",
@@ -39,6 +42,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "husky": "^1.1.2",
+    "nodemon": "^1.18.5",
     "prettier": "1.14.3"
   }
 }
