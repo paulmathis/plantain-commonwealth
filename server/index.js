@@ -1,13 +1,25 @@
+require('dotenv').config();
 const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const Product = require('./models/ProductModel');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
-// app.get("/", (req, res) => res.send("Hello World!"));
+app.use(bodyParser.json());
 
-// create a GET route
-app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+const dbUser = process.env.DB_USER;
+const dbPass = process.env.DB_PASS;
+
+mongoose.set('debug', true);
+mongoose.connect(`mongodb://${dbUser}:${dbPass}@ds237979.mlab.com:37979/plantain-commonwealth`);
+
+// Product.create({ name: 'Shirt' });
+
+app.get('/', async (req, res) => {
+  const product = await Product.find({ name: 'Shirt' });
+  return res.send(product);
 });
 
 /* eslint-disable */
