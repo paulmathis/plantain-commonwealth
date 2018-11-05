@@ -8,7 +8,6 @@ const categoryGroupSchema = new mongoose.Schema({
   categories: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: 'Category',
     },
   ],

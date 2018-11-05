@@ -5,6 +5,7 @@ import Products from './Products';
 
 import Sidebar from './Sidebar';
 import { phone } from '../../../util/mediaQueries';
+import fetchJSON from '../../../util/helpers';
 
 const Grid = styled.div`
   display: grid;
@@ -16,12 +17,6 @@ const Grid = styled.div`
   `)};
 `;
 
-async function fetchJSON(url) {
-  const response = await fetch(url);
-  const json = await response.json();
-  return json;
-}
-
 export default class extends Component {
   constructor(props) {
     super(props);
@@ -32,8 +27,12 @@ export default class extends Component {
   }
 
   async componentDidMount() {
-    const products = await fetchJSON('/api/products');
-    this.setState({ products });
+    try {
+      const products = await fetchJSON('/api/products');
+      this.setState({ products });
+    } catch (e) {
+      this.setState({ products: [] });
+    }
   }
 
   render() {
