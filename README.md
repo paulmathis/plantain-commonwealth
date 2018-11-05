@@ -16,14 +16,14 @@ The Plaintain Commonwealth is a demo E-Commerce clothing store.
 
 Clone the repository
 
-Install node modules
+Install node modules for server and client
 
 ```
-npm install
+npm install && cd ./client && npm install && cd ../
 ```
 
 Run the server
 
 ```
-npm start
+npm run dev
 ```
