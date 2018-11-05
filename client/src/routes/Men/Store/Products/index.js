@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import Product from '../../../../components/Product';
-import shirtGreen from '../../../../assets/green-t-shirt.jpg';
 import Top from './Top';
 
 const Grid = styled.div`
@@ -10,20 +9,11 @@ const Grid = styled.div`
   grid-gap: 30px;
 `;
 
-export default () => (
+export default ({ products }) => (
   <Grid>
     <Top />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
-    <Product img={shirtGreen} name="Green T-Shirt" price="$19.99" />
+    {products.map(product => (
+      <Product img={product.img} name={product.name} price={product.price} />
+    ))}
   </Grid>
 );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled, { css } from 'styled-components/macro';
 import Container from '../../../components/Container';
 import Products from './Products';
@@ -16,11 +16,35 @@ const Grid = styled.div`
   `)};
 `;
 
-export default () => (
-  <Container>
-    <Grid>
-      <Sidebar />
-      <Products />
-    </Grid>
-  </Container>
-);
+async function fetchJSON(url) {
+  const response = await fetch(url);
+  const json = await response.json();
+  return json;
+}
+
+export default class extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      products: [],
+    };
+  }
+
+  async componentDidMount() {
+    const products = await fetchJSON('/api/products');
+    this.setState({ products });
+  }
+
+  render() {
+    const { products } = this.state;
+    return (
+      <Container>
+        <Grid>
+          <Sidebar />
+          <Products products={products} />
+        </Grid>
+      </Container>
+    );
+  }
+}

@@ -57,7 +57,7 @@ export default ({ img, name, price }) => (
     </div>
     <div>
       <Link to="/">{name}</Link>
-      <p>{price}</p>
+      <p>${price}</p>
     </div>
   </Product>
 );

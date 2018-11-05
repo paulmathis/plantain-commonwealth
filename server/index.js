@@ -17,9 +17,9 @@ mongoose.connect(`mongodb://${dbUser}:${dbPass}@ds237979.mlab.com:37979/plantain
 
 // Product.create({ name: 'Shirt' });
 
-app.get('/', async (req, res) => {
-  const product = await Product.find({ name: 'Shirt' });
-  return res.send(product);
+app.get('/api/products', async (req, res) => {
+  const products = await Product.find();
+  return res.json(products);
 });
 
 /* eslint-disable */
