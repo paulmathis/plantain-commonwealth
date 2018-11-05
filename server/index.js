@@ -1,21 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+
+require('./bootstrap');
 const Product = require('./models/ProductModel');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
-
-const dbUser = process.env.DB_USER;
-const dbPass = process.env.DB_PASS;
-
-mongoose.set('debug', true);
-mongoose.connect(`mongodb://${dbUser}:${dbPass}@ds237979.mlab.com:37979/plantain-commonwealth`);
-
-// Product.create({ name: 'Shirt' });
 
 app.get('/api/products', async (req, res) => {
   const products = await Product.find();
