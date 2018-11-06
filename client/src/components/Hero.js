@@ -13,6 +13,7 @@ export default styled.section`
   color: white;
   margin-top: 60px;
   height: ${props => (props.small ? '300px' : '570px')};
+  height: ${props => (props.xsmall ? '150px' : '570px')};
 
   h1 {
     font-size: 4em;
@@ -28,6 +29,6 @@ export default styled.section`
   }
 
   ${desktop(css`
-    height: ${props => (props.small ? '300px' : '470px')};
+    height: ${props => props.small && '300px'};
   `)};
 `;

@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Home from './routes/Home';
 import Men from './routes/Men';
 import Footer from './components/Footer';
+import Admin from './routes/Admin';
 
 const theme = {
   orange: '#e65540',
@@ -23,6 +24,7 @@ export default () => (
         <Header />
         <Route exact path="/" component={Home} />
         <Route exact path="/men" component={Men} />
+        <Route exact path="/admin" component={Admin} />
         <Footer />
       </div>
     </Router>

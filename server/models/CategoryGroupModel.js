@@ -5,6 +5,10 @@ const categoryGroupSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  path: {
+    type: String,
+    require: true,
+  },
   categories: [
     {
       type: mongoose.Schema.Types.ObjectId,
