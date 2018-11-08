@@ -1,3 +1,6 @@
+### This project is currently under development.
+You can view a limited front end here https://paulmathis.github.io/plantain-commonwealth/
+
 # Plaintain Commonwealth
 
 ## About
