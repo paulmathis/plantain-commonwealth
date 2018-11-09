@@ -6,7 +6,7 @@ export default styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.black};
   border-bottom: 1px solid transparent;
-  transition: all 0.4s;
+  transition: border 0.4s;
   :hover {
     border-bottom: 1px solid ${({ theme }) => theme.black};
   }
@@ -17,9 +17,9 @@ export default styled(Link)`
     width: 100%;
     text-align: start;
     padding: 10px;
-    border: none;
+    transition: all 0.4s;
     :hover {
-      border: none;
+      border-bottom: 1px solid transparent;
     }
   `)};
 `;
