@@ -3,20 +3,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 require('./bootstrap');
-const Product = require('./models/ProductModel');
-const CategoryGroupRouter = require('./routes/CategoryGroupRoutes');
+const { createRouter } = require('./util/helpers');
+const CategoryGroupController = require('./controllers/CategoryGroupController');
+const ProductController = require('./controllers/ProductController');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
-app.use('/api/category_groups', CategoryGroupRouter);
-
-app.get('/api/products', async (req, res) => {
-  const products = await Product.find();
-  return res.json(products);
-});
+app.use('/api/category_groups', createRouter(CategoryGroupController));
+app.use('/api/products', createRouter(ProductController));
 
 /* eslint-disable */
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
