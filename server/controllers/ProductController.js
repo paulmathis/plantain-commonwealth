@@ -1,11 +1,4 @@
-const BaseController = require('./BaseController');
-const Product = require('../models/ProductModel');
+const ProductModel = require('../models/ProductModel');
+const { createController } = require('../util/helpers');
 
-class ProductController extends BaseController {
-  static async list(req, res) {
-    const products = await Product.find();
-    return res.json(products);
-  }
-}
-
-module.exports = ProductController;
+module.exports = createController(ProductModel);

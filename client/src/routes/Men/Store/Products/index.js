@@ -20,7 +20,7 @@ export default ({ products }) => (
     <Top />
     {products.length === 0 && <h1 className="message">No results found.</h1>}
     {products.map(product => (
-      <Product img={product.img} name={product.name} price={product.price} />
+      <Product image={product.image} name={product.name} price={product.price} key={product._id} />
     ))}
   </Grid>
 );

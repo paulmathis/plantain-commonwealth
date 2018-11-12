@@ -46,10 +46,10 @@ const Product = styled.div`
   }
 `;
 
-export default ({ img, name, price }) => (
+export default ({ image, name, price }) => (
   <Product>
     <div className="img-container">
-      <img src={img} alt="" />
+      <img src={image} alt="" />
       <div />
       <Button round dark>
         Add to Cart
