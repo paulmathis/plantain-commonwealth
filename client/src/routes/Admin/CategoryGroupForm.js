@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Form from './Form';
+import Alert from '../../components/Alert';
+import { checkEmpty } from '../../util/helpers';
 
 export default class CategoryGroupForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: '',
-      path: '',
+      values: {
+        name: '',
+        path: '',
+      },
       error: false,
     };
 
@@ -17,8 +21,12 @@ export default class CategoryGroupForm extends Component {
   }
 
   handleChange(e) {
+    const { values } = this.state;
     this.setState({
-      [e.target.name]: e.target.value,
+      values: {
+        ...values,
+        [e.target.name]: e.target.value,
+      },
     });
   }
 
@@ -28,7 +36,7 @@ export default class CategoryGroupForm extends Component {
     axios
       .post('/api/category_groups', this.state)
       .then(() => {
-        this.setState({ name: '', path: '' });
+        this.setState({ values: { name: '', path: '' } });
       })
       .catch(() => {
         this.setState({ error: true });
@@ -36,8 +44,7 @@ export default class CategoryGroupForm extends Component {
   }
 
   render() {
-    const { name, path } = this.state;
-    const inputRequired = name.length === 0 || path.length === 0;
+    const { values, error } = this.state;
     return (
       <Form onSubmit={this.handleSubmit} action="">
         <h3>Create Category Group</h3>
@@ -46,18 +53,19 @@ export default class CategoryGroupForm extends Component {
           name="name"
           placeholder="Category Group Name"
           type="text"
-          value={name}
+          value={values.name}
         />
         <input
           onChange={this.handleChange}
           name="path"
           placeholder="URL Path"
           type="text"
-          value={path}
+          value={values.path}
         />
-        <button disabled={inputRequired} type="submit">
+        <button disabled={checkEmpty(values)} type="submit">
           Create
         </button>
+        {error && <Alert>An error occoured. Please check input data and try again.</Alert>}
       </Form>
     );
   }

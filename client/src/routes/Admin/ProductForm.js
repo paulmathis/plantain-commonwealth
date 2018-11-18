@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Form, { SelectWrap } from './Form';
+import Alert from '../../components/Alert';
+import { checkEmpty } from '../../util/helpers';
 
 export default class ProductForm extends Component {
   constructor(props) {
@@ -8,20 +10,22 @@ export default class ProductForm extends Component {
 
     this.state = {
       categories: [],
-      category: '',
-      name: '',
-      price: '',
-      quantity: '',
-      image: '',
+      values: {
+        category: '',
+        name: '',
+        price: '',
+        quantity: '',
+        image: '',
+      },
+      error: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleNumber = this.handleNumber.bind(this);
   }
 
   componentDidMount() {
-    axios('/api/categories').then(res => {
+    axios('/api/categories?populate=true').then(res => {
       this.setState({
         categories: res.data,
       });
@@ -29,34 +33,30 @@ export default class ProductForm extends Component {
   }
 
   handleChange(e) {
+    const { values } = this.state;
     this.setState({
-      [e.target.name]: e.target.value,
-    });
-  }
-
-  // Check for number input only
-  handleNumber(e) {
-    const { quantity } = this.state;
-    // If value will be a number or blank set the qantity to the new number, otherwise keep the original
-    const validInput = Number(e.target.value) || e.target.value === '' ? e.target.value : quantity;
-    this.setState({
-      quantity: validInput,
+      values: {
+        ...values,
+        [e.target.name]: e.target.value,
+      },
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const { quantity, price } = this.state;
+    const { values } = this.state;
 
     axios
-      .post('/api/products', { ...this.state, quantity: Number(quantity), price: Number(price) })
+      .post('/api/products', { ...values })
       .then(() => {
         this.setState({
-          category: '',
-          name: '',
-          price: '',
-          quantity: '',
-          image: '',
+          values: {
+            category: '',
+            name: '',
+            price: '',
+            quantity: '',
+            image: '',
+          },
         });
       })
       .catch(() => {
@@ -65,49 +65,56 @@ export default class ProductForm extends Component {
   }
 
   render() {
-    const { categories, category, name, price, quantity, image } = this.state;
+    const { categories, values, error } = this.state;
+
+    // Create all category options to assin a product too
+    const categoryOptions = categories.map(cat => (
+      <option value={cat._id} key={cat._id}>
+        {cat.name} - ({cat.category_group.name})
+      </option>
+    ));
+
     return (
       <Form onSubmit={this.handleSubmit} action="">
         <h3>Create Product for Category</h3>
         <SelectWrap>
-          <select onChange={this.handleChange} value={category} name="category">
+          <select onChange={this.handleChange} value={values.category} name="category">
             <option value="">Select Category...</option>
-            {categories.map(cat => (
-              <option value={cat._id} key={cat._id}>
-                {cat.name}
-              </option>
-            ))}
+            {categoryOptions}
           </select>
         </SelectWrap>
         <input
           onChange={this.handleChange}
-          value={name}
+          value={values.name}
           name="name"
           placeholder="Product Name"
           type="text"
         />
         <input
           onChange={this.handleChange}
-          value={price}
+          value={values.price}
           name="price"
           placeholder="Price"
           type="text"
         />
         <input
-          onChange={this.handleNumber}
-          value={quantity}
+          onChange={this.handleChange}
+          value={values.quantity}
           name="quantity"
           placeholder="Quantity"
           type="text"
         />
         <input
           onChange={this.handleChange}
-          value={image}
+          value={values.image}
           name="image"
-          placeholder="Image URL Path"
+          placeholder="Image Filename"
           type="text"
         />
-        <button type="submit">Create</button>
+        <button type="submit" disabled={checkEmpty(values)}>
+          Create
+        </button>
+        {error && <Alert>An error occoured. Please check input data and try again.</Alert>}
       </Form>
     );
   }

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import styled, { css } from 'styled-components/macro';
 import Container from '../../../components/Container';
 import Products from './Products';
 
 import Sidebar from './Sidebar';
 import { phone } from '../../../util/mediaQueries';
-import fetchJSON from '../../../util/helpers';
+import { fetchJSON } from '../../../util/helpers';
 
 const Grid = styled.div`
   display: grid;

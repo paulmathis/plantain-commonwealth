@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export default styled.form`
   display: flex;
@@ -13,6 +13,7 @@ export default styled.form`
   }
 
   button {
+    border: none;
     align-self: flex-start;
     padding: 7px 15px;
     background-color: #2196f3;

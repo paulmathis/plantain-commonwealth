@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react';
+import styled from 'styled-components/macro';
 import Container from '../../components/Container';
 import Hero from '../../components/Hero';
 import CategoryGroupForm from './CategoryGroupForm';
@@ -12,17 +12,21 @@ const Grid = styled.div`
   grid-gap: 40px;
 `;
 
-export default () => (
-  <React.Fragment>
-    <Hero xsmall>
-      <h1>Admin</h1>
-    </Hero>
-    <Container>
-      <Grid>
-        <CategoryGroupForm />
-        <CategoryForm />
-        <ProductForm />
-      </Grid>
-    </Container>
-  </React.Fragment>
-);
+export default class extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <Hero xsmall>
+          <h1>Admin</h1>
+        </Hero>
+        <Container>
+          <Grid>
+            <CategoryGroupForm update={this.forceUpdate} />
+            <CategoryForm update={this.forceUpdate} />
+            <ProductForm update={this.forceUpdate} />
+          </Grid>
+        </Container>
+      </React.Fragment>
+    );
+  }
+}

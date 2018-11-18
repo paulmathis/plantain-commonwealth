@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Form, { SelectWrap } from './Form';
+import Alert from '../../components/Alert';
+import { checkEmpty } from '../../util/helpers';
 
 export default class CategoryForm extends Component {
   constructor(props) {
@@ -9,8 +11,11 @@ export default class CategoryForm extends Component {
 
     this.state = {
       categoryGroups: [],
-      category_group: '',
-      name: '',
+      values: {
+        category_group: '',
+        name: '',
+      },
+      error: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,18 +31,23 @@ export default class CategoryForm extends Component {
   }
 
   handleChange(e) {
+    const { values } = this.state;
     this.setState({
-      [e.target.name]: e.target.value,
+      values: {
+        ...values,
+        [e.target.name]: e.target.value,
+      },
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    const { values } = this.state;
 
     axios
-      .post('/api/categories', this.state)
+      .post('/api/categories', values)
       .then(() => {
-        this.setState({ name: '', category_group: '' });
+        this.setState({ values: { name: '', category_group: '' } });
       })
       .catch(() => {
         this.setState({ error: true });
@@ -45,12 +55,12 @@ export default class CategoryForm extends Component {
   }
 
   render() {
-    const { categoryGroups, category_group, name } = this.state;
+    const { values, categoryGroups, error } = this.state;
     return (
       <Form onSubmit={this.handleSubmit} action="">
         <h3>Create Category for Group</h3>
         <SelectWrap>
-          <select name="category_group" onChange={this.handleChange} value={category_group}>
+          <select name="category_group" onChange={this.handleChange} value={values.category_group}>
             <option value="">Select Category Group...</option>
             {categoryGroups.map(group => (
               <option value={group._id} key={group._id}>
@@ -61,12 +71,15 @@ export default class CategoryForm extends Component {
         </SelectWrap>
         <input
           onChange={this.handleChange}
-          value={name}
+          value={values.name}
           name="name"
           placeholder="Category Name"
           type="text"
         />
-        <button type="submit">Create</button>
+        <button type="submit" disabled={checkEmpty(values)}>
+          Create
+        </button>
+        {error && <Alert>An error occoured. Please check input data and try again.</Alert>}
       </Form>
     );
   }
