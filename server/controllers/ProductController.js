@@ -4,6 +4,27 @@ const { createController } = require('../util/helpers');
 const BaseController = createController(ProductModel);
 
 class ProdcutController extends BaseController {
+  static async list(req, res) {
+    // Return category group info if ?populate=true
+    if (req.query.populate) {
+      const products = await ProductModel.find().populate('category');
+      return res.json(products);
+    }
+
+    // Range query between array 0,1 postitions
+    if (req.query.range) {
+      const range = JSON.parse(req.query.range);
+      const products = await ProductModel.find()
+        .where('price')
+        .gt(range[0])
+        .lt(range[1]);
+      return res.json(products);
+    }
+
+    const products = await ProductModel.find();
+    return res.json(products);
+  }
+
   static async create(req, res) {
     // Get the category of the product
     const category = await CategoryModel.findById(req.body.category).populate('category_group');

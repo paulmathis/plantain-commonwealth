@@ -17,5 +17,5 @@ app.use('/api/category_groups', createRouter(CategoryGroupController));
 app.use('/api/categories', createRouter(CategoryController));
 app.use('/api/products', createRouter(ProductController));
 
-/* eslint-disable */
+// eslint-disable-next-line no-console
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

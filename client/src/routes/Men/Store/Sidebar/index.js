@@ -11,9 +11,9 @@ const Wrapper = styled.div`
   }
 `;
 
-export default () => (
+export default ({ onSliderChange }) => (
   <Wrapper>
     <Categories />
-    <Filters />
+    <Filters onSliderChange={onSliderChange} />
   </Wrapper>
 );

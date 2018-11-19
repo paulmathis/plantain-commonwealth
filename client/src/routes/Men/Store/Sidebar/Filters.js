@@ -49,6 +49,7 @@ export default class extends Component {
 
   render() {
     const { priceRange } = this.state;
+    const { onSliderChange } = this.props;
     return (
       <Wrapper>
         <h3>Filters</h3>
@@ -58,6 +59,7 @@ export default class extends Component {
           allowCross={false}
           defaultValue={[0, 200]}
           onChange={this.onSliderChange}
+          onAfterChange={onSliderChange}
           min={0}
           max={200}
         />

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import styled, { css } from 'styled-components/macro';
 import Container from '../../../components/Container';
 import Products from './Products';
@@ -24,12 +23,32 @@ export default class extends Component {
 
     this.state = {
       products: [],
+      range: [0, 200],
     };
+
+    this.onSliderChange = this.onSliderChange.bind(this);
+    this.updateProducts = this.updateProducts.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.updateProducts();
+  }
+
+  onSliderChange(value) {
+    this.setState(
+      {
+        range: value,
+      },
+      () => {
+        this.updateProducts();
+      }
+    );
+  }
+
+  async updateProducts() {
+    const { range } = this.state;
     try {
-      const products = await fetchJSON('/api/products');
+      const products = await fetchJSON(`/api/products?range=[${range}]`);
       this.setState({ products });
     } catch (e) {
       this.setState({ products: [] });
@@ -38,10 +57,11 @@ export default class extends Component {
 
   render() {
     const { products } = this.state;
+
     return (
       <Container>
         <Grid>
-          <Sidebar />
+          <Sidebar onSliderChange={this.onSliderChange} />
           <Products products={products} />
         </Grid>
       </Container>
