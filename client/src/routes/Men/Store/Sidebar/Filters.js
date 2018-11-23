@@ -1,36 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Button from '../../../../components/Button';
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  hr {
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-
-  .filter-range {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  input {
-    padding: 20px;
-    border: 1px solid #e6e6e6;
-    color: ${({ theme }) => theme.grey};
-  }
-`;
-
-const RangeSlider = styled(Range)`
-  margin-top: 20px;
-  margin-bottom: 20px;
-`;
-
-export default class extends Component {
+class Filters extends Component {
   constructor(props) {
     super(props);
 
@@ -75,3 +50,35 @@ export default class extends Component {
     );
   }
 }
+
+Filters.propTypes = {
+  onSliderChange: PropTypes.func.isRequired,
+};
+
+export default Filters;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .filter-range {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  input {
+    padding: 20px;
+    border: 1px solid #e6e6e6;
+    color: ${({ theme }) => theme.grey};
+  }
+`;
+
+const RangeSlider = styled(Range)`
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;

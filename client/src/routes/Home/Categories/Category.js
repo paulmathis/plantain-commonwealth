@@ -1,8 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import Button from '../../../components/Button';
 
-const Category = styled.div`
+function Category({ img, name }) {
+  return (
+    <Wrapper>
+      <img src={img} alt={name} />
+      <Button>{name}</Button>
+    </Wrapper>
+  );
+}
+
+Category.propTypes = {
+  img: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
+export default Category;
+
+const Wrapper = styled.div`
   overflow: hidden;
   position: relative;
 
@@ -24,10 +41,3 @@ const Category = styled.div`
     transform: translateX(-50%);
   }
 `;
-
-export default ({ img, name }) => (
-  <Category>
-    <img src={img} alt={name} />
-    <Button>{name}</Button>
-  </Category>
-);

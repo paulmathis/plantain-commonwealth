@@ -6,12 +6,13 @@
   "scripts": {
     "dev": "concurrently \"npm run server\" \"cd client && npm start\"",
     "server": "nodemon server/index.js",
-    "test-client": "cd client && npm run test-build",
+    "test-client-watch": "cd client && npm run test",
+    "test-client-build": "cd client && npm run test-build",
     "format-client": "prettier --write client/src/**/*.{html,css,js,json}",
     "format-server": "prettier --write server/**/*.{html,css,js,json}",
     "lint-client": "eslint ./client/src -c ./client/.eslintrc.json --fix",
     "lint-server": "eslint ./server --fix",
-    "clean-code": "npm run format-client & npm run format-server & npm run lint-client & npm run lint-server & npm run test-client"
+    "clean-code": "npm run format-client & npm run format-server & npm run lint-client & npm run lint-server & npm run test-client-build"
   },
   "husky": {
     "hooks": {
