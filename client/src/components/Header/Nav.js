@@ -14,7 +14,6 @@ export default styled.nav`
     grid-column: 1 / -1;
     overflow: hidden;
     transition: max-height 1s;
-
     max-height: ${props => (props.open ? '500px' : '0')};
   `)};
 `;
