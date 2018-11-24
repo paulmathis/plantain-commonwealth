@@ -5,6 +5,7 @@ import Nav from './Nav';
 import NavItem from './NavItem';
 import Logo from './Logo';
 import { desktop } from '../../util/mediaQueries';
+import Hambuger from './Hambuger';
 
 export default class extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class extends Component {
             <FontAwesomeIcon icon="shopping-bag" />
             <span>2</span>
           </Shopping>
-          <Hambuger onClick={this.handleToggle}>=</Hambuger>
+          <Hambuger active={navOpen} onClick={this.handleToggle} />
         </Accounts>
       </Header>
     );
@@ -92,10 +93,12 @@ const Accounts = styled.div`
   justify-self: end;
   font-size: 2em;
   display: flex;
+  justify-content: space-between;
   svg {
     margin: 0 5px 0 5px;
     color: ${({ theme }) => theme.lightGrey};
     cursor: pointer;
+    height: 36px;
   }
 
   ${desktop(css`
@@ -105,11 +108,4 @@ const Accounts = styled.div`
 
 const Shopping = styled.div`
   position: relative;
-`;
-
-const Hambuger = styled.button`
-  display: none;
-  ${desktop(css`
-    display: block;
-  `)};
 `;

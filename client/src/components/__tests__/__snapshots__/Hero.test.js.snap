@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Hero /> 1`] = `
+.c0 {
+  background: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url(/somepic.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: white;
+  margin-top: 60px;
+  height: 570px;
+  height: 570px;
+}
+
+.c0 h1 {
+  text-align: center;
+  font-size: 4em;
+  margin: 0;
+}
+
+.c0 h2 {
+  font-weight: 400;
+}
+
+.c0 button {
+  margin-top: 42px;
+}
+
+<section
+  class="c0"
+  src="/somepic.jpg"
+/>
+`;
+
+exports[`<Hero /> small 1`] = `
+.c0 {
+  background: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url(/somepic.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: white;
+  margin-top: 60px;
+  height: 300px;
+  height: 570px;
+}
+
+.c0 h1 {
+  text-align: center;
+  font-size: 4em;
+  margin: 0;
+}
+
+.c0 h2 {
+  font-weight: 400;
+}
+
+.c0 button {
+  margin-top: 42px;
+}
+
+@media (max-width:992px) {
+  .c0 {
+    height: 300px;
+  }
+}
+
+<section
+  class="c0"
+  src="/somepic.jpg"
+/>
+`;
+
+exports[`<Hero /> xsmall 1`] = `
+.c0 {
+  background: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url(/somepic.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: white;
+  margin-top: 60px;
+  height: 570px;
+  height: 150px;
+}
+
+.c0 h1 {
+  text-align: center;
+  font-size: 4em;
+  margin: 0;
+}
+
+.c0 h2 {
+  font-weight: 400;
+}
+
+.c0 button {
+  margin-top: 42px;
+}
+
+<section
+  class="c0"
+  src="/somepic.jpg"
+/>
+`;

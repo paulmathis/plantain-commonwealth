@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components/macro';
+import PropTypes from 'prop-types';
 import { desktop } from '../util/mediaQueries';
 
-export default styled.section`
+const Hero = styled.section`
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(${props => props.src});
   background-size: cover;
   background-position: center;
@@ -16,6 +17,7 @@ export default styled.section`
   height: ${props => (props.xsmall ? '150px' : '570px')};
 
   h1 {
+    text-align: center;
     font-size: 4em;
     margin: 0;
   }
@@ -32,3 +34,11 @@ export default styled.section`
     height: ${props => props.small && '300px'};
   `)};
 `;
+
+Hero.propTypes = {
+  src: PropTypes.string.isRequired,
+  small: PropTypes.bool,
+  xsmall: PropTypes.bool,
+};
+
+export default Hero;

@@ -17,7 +17,6 @@ export default styled(Link)`
     width: 100%;
     text-align: start;
     padding: 10px;
-    transition: all 0.4s;
     :hover {
       border-bottom: 1px solid transparent;
     }
