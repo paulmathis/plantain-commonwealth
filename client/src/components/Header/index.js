@@ -6,6 +6,7 @@ import NavItem from './NavItem';
 import Logo from './Logo';
 import { desktop } from '../../util/mediaQueries';
 import Hambuger from './Hambuger';
+import Cart from './Cart';
 
 export default class extends Component {
   constructor(props) {
@@ -13,18 +14,29 @@ export default class extends Component {
 
     this.state = {
       navOpen: false,
+      cartOpen: false,
     };
 
     this.handleToggle = this.handleToggle.bind(this);
+    this.handleCart = this.handleCart.bind(this);
   }
 
   handleToggle() {
-    const { navOpen } = this.state;
-    this.setState({ navOpen: !navOpen });
+    this.setState(state => ({
+      navOpen: !state.navOpen,
+      cartOpen: false,
+    }));
+  }
+
+  handleCart() {
+    this.setState(state => ({
+      cartOpen: !state.cartOpen,
+      navOpen: false,
+    }));
   }
 
   render() {
-    const { navOpen } = this.state;
+    const { navOpen, cartOpen } = this.state;
     return (
       <Header>
         <Logo />
@@ -39,10 +51,11 @@ export default class extends Component {
         <Accounts>
           <FontAwesomeIcon icon="user-circle" />
           <Shopping>
-            <FontAwesomeIcon icon="shopping-bag" />
+            <FontAwesomeIcon onClick={this.handleCart} icon="shopping-bag" />
             <span>2</span>
           </Shopping>
           <Hambuger active={navOpen} onClick={this.handleToggle} />
+          <Cart open={cartOpen} />
         </Accounts>
       </Header>
     );
@@ -91,10 +104,11 @@ const Header = styled.header`
 
 const Accounts = styled.div`
   justify-self: end;
-  font-size: 2em;
   display: flex;
   justify-content: space-between;
+
   svg {
+    font-size: 2rem;
     margin: 0 5px 0 5px;
     color: ${({ theme }) => theme.lightGrey};
     cursor: pointer;
@@ -108,4 +122,5 @@ const Accounts = styled.div`
 
 const Shopping = styled.div`
   position: relative;
+  font-size: 2rem;
 `;

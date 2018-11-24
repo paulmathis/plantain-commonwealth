@@ -23,6 +23,7 @@ export default Hambuger;
 
 const Wrapper = styled.button`
   border: none;
+  display: none;
   background: none;
   margin-left: 5px;
   .bar1,
