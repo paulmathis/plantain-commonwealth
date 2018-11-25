@@ -36,7 +36,7 @@ const Hero = styled.section`
 `;
 
 Hero.propTypes = {
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
   small: PropTypes.bool,
   xsmall: PropTypes.bool,
 };

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import history from '../../util/history';
 import Nav from './Nav';
 import NavItem from './NavItem';
 import Logo from './Logo';
@@ -21,6 +22,21 @@ export default class extends Component {
     this.handleCart = this.handleCart.bind(this);
   }
 
+  // Setup history listener and close open tabs on page change
+  componentDidMount() {
+    const unlisten = history.listen(() => {
+      this.setState({ navOpen: false, cartOpen: false });
+    });
+    this.setState({ unlisten });
+  }
+
+  // Cleanup history listener
+  componentWillUnmount() {
+    const { unlisten } = this.state;
+    unlisten();
+  }
+
+  // Handles navbar hambguer menu toggle
   handleToggle() {
     this.setState(state => ({
       navOpen: !state.navOpen,
@@ -28,6 +44,7 @@ export default class extends Component {
     }));
   }
 
+  // Handles shopping cart toggle
   handleCart() {
     this.setState(state => ({
       cartOpen: !state.cartOpen,
@@ -46,7 +63,7 @@ export default class extends Component {
           <NavItem to="/men">Men</NavItem>
           <NavItem to="/shoes">Shoes</NavItem>
           <NavItem to="/accessories">Accessories</NavItem>
-          <NavItem to="/sale">Sale</NavItem>
+          {/* <NavItem to="/sale">Sale</NavItem> */}
         </Nav>
         <Accounts>
           <FontAwesomeIcon icon="user-circle" />
@@ -71,7 +88,8 @@ const Header = styled.header`
   padding-left: 40px;
   text-align: center;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: 1fr minmax(auto, 700px) 1fr;
+  grid-gap: 50px;
   align-items: center;
   box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
   min-height: 60px;
@@ -99,6 +117,7 @@ const Header = styled.header`
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
     position: absolute;
+    grid-gap: 0;
   `)};
 `;
 

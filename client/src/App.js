@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components/macro';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
+import history from './util/history';
 import Header from './components/Header';
 import Home from './routes/Home';
 import Footer from './components/Footer';
@@ -10,7 +11,7 @@ import theme from './util/theme';
 
 export default () => (
   <ThemeProvider theme={theme}>
-    <Router>
+    <Router history={history}>
       <div className="app-container">
         <Header />
         <Route exact path="/" component={Home} />
