@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components/macro';
+import axios from 'axios';
 import Container from '../../../components/Container';
 import Products from './Products';
-
 import Sidebar from './Sidebar';
 import { phone } from '../../../util/mediaQueries';
 import { fetchJSON } from '../../../util/helpers';
@@ -17,13 +18,14 @@ const Grid = styled.div`
   `)};
 `;
 
-export default class extends Component {
+export default class Store extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       products: [],
       range: [0, 200],
+      categories: [],
     };
 
     this.onSliderChange = this.onSliderChange.bind(this);
@@ -32,6 +34,13 @@ export default class extends Component {
 
   componentDidMount() {
     this.updateProducts();
+
+    // Get list of categories available
+    const { group } = this.props;
+    axios(`/api/category_groups/${group}?populate=true`).then(res => {
+      const { categories } = res.data;
+      this.setState({ categories });
+    });
   }
 
   onSliderChange(value) {
@@ -56,15 +65,18 @@ export default class extends Component {
   }
 
   render() {
-    const { products } = this.state;
-
+    const { products, categories } = this.state;
     return (
       <Container>
         <Grid>
-          <Sidebar onSliderChange={this.onSliderChange} />
+          <Sidebar categories={categories} onSliderChange={this.onSliderChange} />
           <Products products={products} />
         </Grid>
       </Container>
     );
   }
 }
+
+Store.propTypes = {
+  group: PropTypes.string.isRequired,
+};

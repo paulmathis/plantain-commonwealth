@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components/macro';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import history from './util/history';
 import Header from './components/Header';
 import Home from './routes/Home';
@@ -17,13 +17,15 @@ export default () => (
     <Router history={history}>
       <div className="app-container">
         <Header />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/men" component={Men} />
-        <Route exact path="/women" component={Women} />
-        <Route exact path="/shoes" component={Shoes} />
-        <Route exact path="/accessories" component={Accessories} />
-        <Route exact path="/admin" component={Admin} />
-        <Route component={fourOhFour} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/men" component={Men} />
+          <Route exact path="/women" component={Women} />
+          <Route exact path="/shoes" component={Shoes} />
+          <Route exact path="/accessories" component={Accessories} />
+          <Route exact path="/admin" component={Admin} />
+          <Route component={fourOhFour} />
+        </Switch>
         <Footer />
       </div>
     </Router>

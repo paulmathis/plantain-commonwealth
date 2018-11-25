@@ -16,21 +16,25 @@ function injectProps(myProps) {
 
 const groups = {
   men: {
+    _id: '5be4fca8ee7c6435e011df2e',
     name: 'Men',
     tag: 'New Arrivals Men Collection 2018',
     hero: heroMen,
   },
   women: {
+    _id: '5be4fd24f5719f39bce77265',
     name: 'Women',
     tag: 'New Arrivals Women Collection 2018',
     hero: heroWomen,
   },
   shoes: {
+    _id: '5be71fdd012c8510b0adf52d',
     name: 'Shoes',
     tag: 'New Arrivals Shoes Collection 2018',
     hero: heroShoes,
   },
   accessories: {
+    _id: '5be723a8bc201d29bcbe8977',
     name: 'Accessories',
     tag: 'New Arrivals Accessories Collection 2018',
     hero: heroAccessories,
