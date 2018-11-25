@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"cd client && npm start\"",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "server": "nodemon server/index.js",
     "test-client-watch": "cd client && npm run test",
     "test-client-build": "cd client && npm run test-build",
