@@ -1,5 +1,5 @@
 ### This project is currently under development.
-You can view a limited front end here https://paulmathis.github.io/plantain-commonwealth/
+You can view a work in progress version here https://plantain-commonwealth.herokuapp.com/men
 
 # Plaintain Commonwealth
 
