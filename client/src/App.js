@@ -3,19 +3,10 @@ import { ThemeProvider } from 'styled-components/macro';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './routes/Home';
-import Men from './routes/Men';
 import Footer from './components/Footer';
 import Admin from './routes/Admin';
-
-const theme = {
-  orange: '#e65540',
-  black: '#333',
-  darkBlack: '#222',
-  grey: '#555',
-  lightGrey: '#666',
-  extraLightGrey: '#888',
-  brandPrimary: '#e65540',
-};
+import { Men, Women, Shoes, Accessories } from './routes/CategoryGroups';
+import theme from './util/theme';
 
 export default () => (
   <ThemeProvider theme={theme}>
@@ -24,6 +15,9 @@ export default () => (
         <Header />
         <Route exact path="/" component={Home} />
         <Route exact path="/men" component={Men} />
+        <Route exact path="/women" component={Women} />
+        <Route exact path="/shoes" component={Shoes} />
+        <Route exact path="/accessories" component={Accessories} />
         <Route exact path="/admin" component={Admin} />
         <Footer />
       </div>
