@@ -56,8 +56,9 @@ export default class Store extends Component {
 
   async updateProducts() {
     const { range } = this.state;
+    const { group } = this.props;
     try {
-      const products = await fetchJSON(`/api/products?range=[${range}]`);
+      const products = await fetchJSON(`/api/products?range=[${range}]&group=${group}`);
       this.setState({ products });
     } catch (e) {
       this.setState({ products: [] });

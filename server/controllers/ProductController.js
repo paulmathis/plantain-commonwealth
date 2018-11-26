@@ -1,27 +1,47 @@
-const { ProductModel, CategoryModel } = require('../models');
+const flatten = require('lodash/flatten');
+const { ProductModel, CategoryModel, CategoryGroupModel } = require('../models');
 const { createController } = require('../util/helpers');
 
 const BaseController = createController(ProductModel);
 
 class ProdcutController extends BaseController {
   static async list(req, res) {
-    // Return category group info if ?populate=true
-    if (req.query.populate) {
-      const products = await ProductModel.find().populate('category');
-      return res.json(products);
-    }
+    // Object that can be filled with specific queiries
+    const match = {};
 
-    // Range query between array 0,1 postitions
+    // Add price range to match object
     if (req.query.range) {
       const range = JSON.parse(req.query.range);
-      const products = await ProductModel.find()
-        .where('price')
-        .gt(range[0])
-        .lt(range[1]);
+      match.price = { $gt: range[0], $lt: range[1] };
+    }
+
+    // Return category group info if ?populate=true
+    if (req.query.populate) {
+      const products = await ProductModel.find(match).populate('category');
       return res.json(products);
     }
 
-    const products = await ProductModel.find();
+    // Find all products by category group id
+    if (req.query.group) {
+      const { group } = req.query;
+
+      // Populate out from group to the products
+      const tree = await CategoryGroupModel.findById(group)
+        .select('categories')
+        .populate({
+          path: 'categories',
+          select: 'products',
+          populate: { path: 'products', match },
+        });
+
+      // Pull out an array of products for each category
+      const productArrays = tree.categories.map(category => category.products);
+
+      // Flatten the arrays into one array and return
+      return res.json(flatten(productArrays));
+    }
+
+    const products = await ProductModel.find(match);
     return res.json(products);
   }
 
