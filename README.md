@@ -1,5 +1,5 @@
 ### This project is currently under development.
-You can view a work in progress version here https://plantain-commonwealth.herokuapp.com/men
+You can view a work in progress version here https://plantain-commonwealth.herokuapp.com
 
 # Plaintain Commonwealth
 
