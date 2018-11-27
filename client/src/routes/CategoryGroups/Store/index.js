@@ -8,16 +8,6 @@ import Sidebar from './Sidebar';
 import { phone } from '../../../util/mediaQueries';
 import { fetchJSON } from '../../../util/helpers';
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: minmax(200px, 2fr) minmax(auto, 7fr);
-  grid-gap: 30px;
-
-  ${phone(css`
-    grid-template-columns: 1fr;
-  `)};
-`;
-
 export default class Store extends Component {
   constructor(props) {
     super(props);
@@ -81,3 +71,13 @@ export default class Store extends Component {
 Store.propTypes = {
   group: PropTypes.string.isRequired,
 };
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: minmax(200px, 2fr) minmax(auto, 7fr);
+  grid-gap: 30px;
+
+  ${phone(css`
+    grid-template-columns: 1fr;
+  `)};
+`;

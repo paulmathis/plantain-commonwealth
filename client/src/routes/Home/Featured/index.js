@@ -1,44 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components/macro';
+import axios from 'axios';
 import Product from '../../../components/Product';
-import shirtGreen from '../../../assets/green-t-shirt.jpg';
-import shirtGrey from '../../../assets/grey-t-shirt.jpg';
-import shirtBlue from '../../../assets/blue-t-shirt.jpg';
-import shirtPurple from '../../../assets/purple-t-shirt.jpg';
 
-// Dummy Data
-const products = [
-  {
-    image: shirtGreen,
-    name: 'Green T-Shirt',
-    price: 19.99,
-  },
-  {
-    image: shirtGrey,
-    name: 'Grey T-Shirt',
-    price: 19.99,
-  },
-  {
-    image: shirtBlue,
-    name: 'Blue T-Shirt',
-    price: 19.99,
-  },
-  {
-    image: shirtPurple,
-    name: 'Purple T-Shirt',
-    price: 19.99,
-  },
-];
+export default class Featured extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+    };
+  }
 
-export default () => (
-  <Grid>
-    <h1>FEATURED PRODUCTS</h1>
-    <Product product={products[0]} />
-    <Product product={products[1]} />
-    <Product product={products[2]} />
-    <Product product={products[3]} />
-  </Grid>
-);
+  async componentDidMount() {
+    // Get 4 random products to display
+    const res = await axios('/api/products?random=4');
+    this.setState({ products: res.data });
+  }
+
+  render() {
+    const { products } = this.state;
+    return (
+      <Grid>
+        <h1>FEATURED PRODUCTS</h1>
+        {products.map(product => (
+          <Product key={product._id} product={product} />
+        ))}
+      </Grid>
+    );
+  }
+}
 
 const Grid = styled.div`
   display: grid;

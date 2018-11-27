@@ -15,6 +15,13 @@ class ProdcutController extends BaseController {
       match.price = { $gt: range[0], $lt: range[1] };
     }
 
+    // Return random results of specified length
+    if (req.query.random) {
+      const ammount = Number(req.query.random);
+      const products = await ProductModel.aggregate().sample(ammount);
+      return res.json(products);
+    }
+
     // Return category group info if ?populate=true
     if (req.query.populate) {
       const products = await ProductModel.find(match).populate('category');
