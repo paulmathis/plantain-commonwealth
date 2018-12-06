@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components/macro';
+import { connect } from 'react-redux';
 import Item from './Item';
 import Button from '../../Button';
 import { desktop } from '../../../util/mediaQueries';
 
-export default class Cart extends Component {
+const mapStateToProps = state => ({
+  items: state.cart.items,
+  total: state.cart.total,
+});
+
+class Cart extends Component {
   componentDidMount() {}
 
   render() {
-    const { open } = this.props;
+    const { total, items, open } = this.props;
     return (
       <Wrapper className={open ? 'open' : ''}>
         <Box>
           <div>
-            <Item />
-            <Item />
-            <Item />
+            {items.map(item => (
+              <Item key={item.id} {...item} />
+            ))}
           </div>
-          <p>Total: $75.00</p>
+          <p>Total: ${total.toFixed(2)}</p>
           <CartButtons>
             <CartButton dark round>
               View Cart
@@ -37,6 +43,8 @@ export default class Cart extends Component {
 Cart.propTypes = {
   open: PropTypes.bool.isRequired,
 };
+
+export default connect(mapStateToProps)(Cart);
 
 const Wrapper = styled.div`
   width: 340px;

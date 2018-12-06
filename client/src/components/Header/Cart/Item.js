@@ -1,29 +1,35 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from '../../Link';
-import shirt from '../../../assets/green-t-shirt.jpg';
 
-function Item() {
+function Item({ name, price, quanity, img }) {
   return (
     <Wrapper>
       <ImageContainer>
-        <img src={shirt} alt="shirt" />
+        <img src={img} alt="shirt" />
         <div>
           {' '}
           <FontAwesomeIcon icon="times" />
         </div>
       </ImageContainer>
       <Details>
-        <Link to="/">White Shirt With Pleat Detail Back</Link>
-        <p className="price">1 x $19.99</p>
+        <Link to="/">{name}</Link>
+        <p className="price">
+          {quanity} x ${price}
+        </p>
       </Details>
     </Wrapper>
   );
 }
 
-// Item.propTypes = {};
+Item.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  quanity: PropTypes.number.isRequired,
+  img: PropTypes.string.isRequired,
+};
 
 export default Item;
 
