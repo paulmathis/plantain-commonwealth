@@ -4,11 +4,11 @@ import styled from 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from '../../Link';
 
-function Item({ name, price, quanity, img }) {
+function Item({ name, price, ammount, image }) {
   return (
     <Wrapper>
       <ImageContainer>
-        <img src={img} alt="shirt" />
+        <img src={image} alt="shirt" />
         <div>
           {' '}
           <FontAwesomeIcon icon="times" />
@@ -17,7 +17,7 @@ function Item({ name, price, quanity, img }) {
       <Details>
         <Link to="/">{name}</Link>
         <p className="price">
-          {quanity} x ${price}
+          {ammount} x ${price}
         </p>
       </Details>
     </Wrapper>
@@ -27,8 +27,8 @@ function Item({ name, price, quanity, img }) {
 Item.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  quanity: PropTypes.number.isRequired,
-  img: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  ammount: PropTypes.number.isRequired,
 };
 
 export default Item;

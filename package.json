@@ -14,7 +14,7 @@
     "format-server": "prettier --write server/**/*.{html,css,js,json}",
     "lint-client": "eslint ./client/src -c ./client/.eslintrc.json --fix",
     "lint-server": "eslint ./server --fix",
-    "clean-code": "npm run format-client & npm run format-server & npm run lint-client & npm run lint-server & npm run test-client-build"
+    "clean-code": "npm run format-client & npm run format-server & npm run lint-client & npm run lint-server"
   },
   "husky": {
     "hooks": {

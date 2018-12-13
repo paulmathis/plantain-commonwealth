@@ -1,15 +1,25 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Link from './Link';
 import Button from './Button';
+import { addCartItem } from '../actions';
 
-const Product = ({ product }) => (
+const mapDispatchToProps = dispatch => ({ addToCart: product => dispatch(addCartItem(product)) });
+
+const Product = ({ product, addToCart }) => (
   <Wrapper>
     <ImmageContainer>
       <img src={product.image} alt="" />
       <div />
-      <Button round dark>
+      <Button
+        onClick={() => {
+          addToCart(product);
+        }}
+        round
+        dark
+      >
         Add to Cart
       </Button>
     </ImmageContainer>
@@ -26,9 +36,13 @@ Product.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
-export default Product;
+export default connect(
+  null,
+  mapDispatchToProps
+)(Product);
 
 const ImmageContainer = styled.div`
   position: relative;

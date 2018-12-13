@@ -14,26 +14,16 @@ library.add(faUserCircle, faShoppingBag, faTimes);
 
 const state = {
   cart: {
-    total: 75,
-    items: [
-      {
-        id: 0,
-        name: 'Blue shirt with pleat detail back',
-        price: 19.99,
-        quanity: 3,
-        img: '/assets/products/men/t-shirts/green-t-shirt.jpg',
-      },
-      {
-        id: 1,
-        name: 'Blue shirt with pleat detail back',
-        price: 19.99,
-        quanity: 3,
-        img: '/assets/products/men/t-shirts/green-t-shirt.jpg',
-      },
-    ],
+    total: 0,
+    items: [],
   },
 };
-const store = createStore(rootReducer, state);
+const store = createStore(
+  rootReducer,
+  state,
+  // eslint-disable-next-line no-underscore-dangle
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <Provider store={store}>

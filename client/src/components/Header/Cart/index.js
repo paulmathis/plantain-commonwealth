@@ -21,7 +21,7 @@ class Cart extends Component {
         <Box>
           <div>
             {items.map(item => (
-              <Item key={item.id} {...item} />
+              <Item key={item._id} {...item} />
             ))}
           </div>
           <p>Total: ${total.toFixed(2)}</p>
