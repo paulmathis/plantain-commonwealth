@@ -30,8 +30,23 @@ const cart = (state = [], actions) => {
         total: newTotal,
       };
     }
-    case REMOVE_CART_ITEM:
-      return state;
+    case REMOVE_CART_ITEM: {
+      // Get the current item from the items array
+      const curItem = state.items.find(item => item._id === actions.item._id);
+
+      // Decreases the total cart price if theres more than one of the item remove the price x ammount
+      const newTotal = state.total - curItem.price * (curItem.ammount || 1);
+
+      // Create a new array without that item
+      const itemsArray = state.items.filter(item => item._id !== actions.item._id);
+
+      // Return new state
+      return {
+        ...state,
+        items: itemsArray,
+        total: newTotal,
+      };
+    }
     default:
       return state;
   }

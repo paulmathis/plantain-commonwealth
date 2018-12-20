@@ -21,7 +21,7 @@ class Cart extends Component {
         <Box>
           <div>
             {items.map(item => (
-              <Item key={item._id} {...item} />
+              <Item key={item._id} item={item} />
             ))}
           </div>
           <p>Total: ${total.toFixed(2)}</p>
@@ -42,6 +42,8 @@ class Cart extends Component {
 
 Cart.propTypes = {
   open: PropTypes.bool.isRequired,
+  items: PropTypes.shape.isRequired,
+  total: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps)(Cart);

@@ -1,23 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from '../../Link';
+import { removeCartItem } from '../../../actions';
 
-function Item({ name, price, ammount, image }) {
+const mapDispatchToProps = dispatch => ({
+  removeItem: item => {
+    dispatch(removeCartItem(item));
+  },
+});
+function Item({ item, removeItem }) {
   return (
     <Wrapper>
       <ImageContainer>
-        <img src={image} alt="shirt" />
+        <img src={item.image} alt="shirt" />
         <div>
           {' '}
-          <FontAwesomeIcon icon="times" />
+          <FontAwesomeIcon onClick={() => removeItem(item)} icon="times" />
         </div>
       </ImageContainer>
       <Details>
-        <Link to="/">{name}</Link>
+        <Link to="/">{item.name}</Link>
         <p className="price">
-          {ammount} x ${price}
+          {item.ammount} x ${item.price}
         </p>
       </Details>
     </Wrapper>
@@ -25,13 +32,14 @@ function Item({ name, price, ammount, image }) {
 }
 
 Item.propTypes = {
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-  ammount: PropTypes.number.isRequired,
+  item: PropTypes.shape.isRequired,
+  removeItem: PropTypes.func.isRequired,
 };
 
-export default Item;
+export default connect(
+  null,
+  mapDispatchToProps
+)(Item);
 
 const Wrapper = styled.div`
   height: 90px;
