@@ -35,10 +35,13 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(auto, 270px));
   grid-template-rows: auto auto;
   grid-auto-rows: 0px;
-  grid-gap: 30px;
   justify-content: center;
   justify-items: center;
   overflow: hidden;
+
+  & > div {
+    margin: 0 15px 0 15px;
+  }
 
   h1 {
     grid-column: 1/-1;
