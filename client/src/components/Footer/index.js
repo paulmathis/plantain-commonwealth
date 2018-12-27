@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
+import { desktop, phone } from '../../util/mediaQueries';
 import Link from '../Link';
 import LinkList from './LinkList';
 
@@ -26,11 +27,23 @@ const Footer = styled.footer`
   a {
     font-size: 0.9em;
   }
+
+  ${desktop(css`
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .contact {
+      grid-column: 1/-1;
+    }
+  `)};
+
+  ${phone(css`
+    grid-template-columns: 1fr;
+  `)};
 `;
 
 export default () => (
   <Footer>
-    <div>
+    <div className="contact">
       <h4>Get in touch</h4>
       <p>
         Any questions? Let us know in store at 5th floor, 379 Fake St, Austin, TX 78382 or call us
@@ -58,7 +71,7 @@ export default () => (
       <Link to="/">Shipping</Link>
       <Link to="/">FAQs</Link>
     </LinkList>
-    <div>
+    <div className="newsletter">
       <h4>Newsletter</h4>
     </div>
   </Footer>

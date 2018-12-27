@@ -42,7 +42,7 @@ class Cart extends Component {
 
 Cart.propTypes = {
   open: PropTypes.bool.isRequired,
-  items: PropTypes.shape.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   total: PropTypes.number.isRequired,
 };
 
