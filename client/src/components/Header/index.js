@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styled, { css } from 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import history from '../../util/history';
@@ -9,7 +11,15 @@ import { desktop } from '../../util/mediaQueries';
 import Hambuger from './Hambuger';
 import Cart from './Cart';
 
-export default class extends Component {
+const mapStateToProps = state => {
+  let itemTotal = 0;
+  state.cart.items.forEach(item => {
+    itemTotal += item.ammount;
+  });
+  return { itemTotal };
+};
+
+class Header extends Component {
   constructor(props) {
     super(props);
 
@@ -54,8 +64,9 @@ export default class extends Component {
 
   render() {
     const { navOpen, cartOpen } = this.state;
+    const { itemTotal } = this.props;
     return (
-      <Header>
+      <Wrapper>
         <Logo />
         <Nav open={navOpen}>
           <NavItem to="/">New Arrivals</NavItem>
@@ -69,17 +80,23 @@ export default class extends Component {
           <FontAwesomeIcon icon="user-circle" />
           <Shopping>
             <FontAwesomeIcon onClick={this.handleCart} icon="shopping-bag" />
-            <span>2</span>
+            <span>{itemTotal}</span>
           </Shopping>
           <Hambuger active={navOpen} onClick={this.handleToggle} />
           <Cart open={cartOpen} />
         </Accounts>
-      </Header>
+      </Wrapper>
     );
   }
 }
 
-const Header = styled.header`
+export default connect(mapStateToProps)(Header);
+
+Header.propTypes = {
+  itemTotal: PropTypes.number.isRequired,
+};
+
+const Wrapper = styled.header`
   z-index: 9999;
   position: fixed;
   background-color: white;
