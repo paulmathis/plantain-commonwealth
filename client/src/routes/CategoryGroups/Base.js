@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import Hero from '../../components/Hero';
 import Store from './Store';
 
-const Base = ({ name, tag, hero, _id }) => (
+const Base = ({ hero, name, tag, _id, ...props }) => (
   <React.Fragment>
     <Hero small src={hero}>
       <h1>{name}</h1>
       <h2>{tag}</h2>
     </Hero>
-    <Store group={_id} />
+    <Store {...props} groupName={name} group={_id} />
   </React.Fragment>
 );
 

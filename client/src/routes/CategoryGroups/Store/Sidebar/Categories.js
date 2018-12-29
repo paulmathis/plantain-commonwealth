@@ -13,11 +13,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Categories = ({ categories }) => (
+const Categories = ({ categories, groupName }) => (
   <Wrapper>
     <h3>Categories</h3>
     {categories.map(category => (
-      <Link key={category._id} to="/">
+      <Link key={category._id} to={`/${groupName.toLowerCase()}/${category.name}`}>
         {category.name}
       </Link>
     ))}
@@ -26,6 +26,7 @@ const Categories = ({ categories }) => (
 
 Categories.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+  groupName: PropTypes.string.isRequired,
 };
 
 export default Categories;

@@ -8,6 +8,18 @@ import Sidebar from './Sidebar';
 import { phone } from '../../../util/mediaQueries';
 import { fetchJSON } from '../../../util/helpers';
 
+function getCategoryFilter(props, state) {
+  const { match } = props;
+  const { categories } = state;
+  if (state.categories.length <= 0 || !match.params.category) return { categoryFilter: '' };
+
+  const category = categories.find(
+    cat => cat.name.toUpperCase() === match.params.category.toUpperCase()
+  );
+
+  return { categoryFilter: category._id };
+}
+
 export default class Store extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +28,7 @@ export default class Store extends Component {
       products: [],
       range: [0, 200],
       categories: [],
+      categoryFilter: '',
     };
 
     this.onSliderChange = this.onSliderChange.bind(this);
@@ -23,14 +36,20 @@ export default class Store extends Component {
   }
 
   componentDidMount() {
-    this.updateProducts();
-
     // Get list of categories available
     const { group } = this.props;
     axios(`/api/category_groups/${group}?populate=true`).then(res => {
       const { categories } = res.data;
       this.setState({ categories });
+      this.updateProducts();
     });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { match } = this.props;
+    if (match.params.category !== prevProps.match.params.category) {
+      this.updateProducts();
+    }
   }
 
   onSliderChange(value) {
@@ -44,11 +63,18 @@ export default class Store extends Component {
     );
   }
 
+  static getDerivedStateFromProps(props, state) {
+    return getCategoryFilter(props, state);
+  }
+
   async updateProducts() {
-    const { range } = this.state;
+    const { range, categoryFilter } = this.state;
     const { group } = this.props;
+
     try {
-      const products = await fetchJSON(`/api/products?range=[${range}]&group=${group}`);
+      const products = await fetchJSON(
+        `/api/products?range=[${range}]&category=${categoryFilter}&group=${group}`
+      );
       this.setState({ products });
     } catch (e) {
       this.setState({ products: [] });
@@ -57,10 +83,16 @@ export default class Store extends Component {
 
   render() {
     const { products, categories } = this.state;
+    const { groupName } = this.props;
     return (
       <Container>
         <Grid>
-          <Sidebar categories={categories} onSliderChange={this.onSliderChange} />
+          <Sidebar
+            groupName={groupName}
+            getCategoryFilter={this.getCategoryFilter}
+            categories={categories}
+            onSliderChange={this.onSliderChange}
+          />
           <Products products={products} />
         </Grid>
       </Container>
@@ -70,6 +102,8 @@ export default class Store extends Component {
 
 Store.propTypes = {
   group: PropTypes.string.isRequired,
+  groupName: PropTypes.string.isRequired,
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 const Grid = styled.div`

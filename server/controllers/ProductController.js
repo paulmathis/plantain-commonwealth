@@ -28,6 +28,14 @@ class ProdcutController extends BaseController {
       return res.json(products);
     }
 
+    // Return all products of specific category
+    if (req.query.category) {
+      const { category } = req.query;
+
+      const products = await ProductModel.find({ category, ...match });
+      return res.json(products);
+    }
+
     // Find all products by category group id
     if (req.query.group) {
       const { group } = req.query;

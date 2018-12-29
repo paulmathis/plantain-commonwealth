@@ -19,11 +19,11 @@ export default () => (
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/men" component={Men} />
-          <Route exact path="/women" component={Women} />
-          <Route exact path="/shoes" component={Shoes} />
-          <Route exact path="/accessories" component={Accessories} />
-          <Route exact path="/admin" component={Admin} />
+          <Route path="/men/:category?" component={Men} />
+          <Route exact path="/women/:category?" component={Women} />
+          <Route exact path="/shoes/:category?" component={Shoes} />
+          <Route exact path="/accessories/:category?" component={Accessories} />
+          <Route exact path="/admin/:category?" component={Admin} />
           <Route component={fourOhFour} />
         </Switch>
         <Footer />

@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import Categories from './Categories';
 import Filters from './Filters';
 
-function Sidebar({ onSliderChange, categories }) {
+function Sidebar({ onSliderChange, categories, groupName }) {
   return (
     <Wrapper>
-      <Categories categories={categories} />
+      <Categories groupName={groupName} categories={categories} />
       <Filters onSliderChange={onSliderChange} />
     </Wrapper>
   );
@@ -16,6 +16,7 @@ function Sidebar({ onSliderChange, categories }) {
 Sidebar.propTypes = {
   onSliderChange: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+  groupName: PropTypes.string.isRequired,
 };
 
 export default Sidebar;

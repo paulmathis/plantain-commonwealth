@@ -12,16 +12,16 @@ import bag from '../../../assets/bag.jpg';
 export default () => (
   <Grid>
     <Col>
-      <Category img={shirt} name="Shirts" />
-      <Category img={shoes} name="Shoes" />
+      <Category to="/men/t-shirts" img={shirt} name="Shirts" />
+      <Category to="/shoes" img={shoes} name="Shoes" />
     </Col>
     <Col>
-      <Category img={watches} name="Watches" />
-      <Category img={dress} name="Dresses" />
+      <Category to="/accessories/watches" img={watches} name="Watches" />
+      <Category to="/women/dresses" img={dress} name="Dresses" />
     </Col>
     <Col>
-      <Category img={jacket} name="Jackets" />
-      <Category img={bag} name="Bags" />
+      <Category to="/men/jackets" img={jacket} name="Jackets" />
+      <Category to="/accessories/bag" img={bag} name="Bags" />
     </Col>
   </Grid>
 );

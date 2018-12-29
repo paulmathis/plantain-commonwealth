@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import Button from '../../../components/Button';
 
-function Category({ img, name }) {
+function Category({ img, name, to }) {
   return (
     <Wrapper>
       <img src={img} alt={name} />
-      <Button>{name}</Button>
+      <Link to={to}>
+        <Button>{name}</Button>
+      </Link>
     </Wrapper>
   );
 }
@@ -15,6 +18,7 @@ function Category({ img, name }) {
 Category.propTypes = {
   img: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
 };
 
 export default Category;
