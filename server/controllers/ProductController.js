@@ -9,6 +9,10 @@ class ProdcutController extends BaseController {
     // Object that can be filled with specific queiries
     const match = {};
 
+    // Add search by name to match
+    const name = new RegExp(req.query.name, 'i');
+    match.name = name;
+
     // Add price range to match object
     if (req.query.range) {
       const range = JSON.parse(req.query.range);

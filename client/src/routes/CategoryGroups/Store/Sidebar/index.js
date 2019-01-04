@@ -4,17 +4,18 @@ import PropTypes from 'prop-types';
 import Categories from './Categories';
 import Filters from './Filters';
 
-function Sidebar({ onSliderChange, categories, groupName }) {
+function Sidebar({ onSliderChange, categories, groupName, onSearchChange }) {
   return (
     <Wrapper>
       <Categories groupName={groupName} categories={categories} />
-      <Filters onSliderChange={onSliderChange} />
+      <Filters onSliderChange={onSliderChange} onSearchChange={onSearchChange} />
     </Wrapper>
   );
 }
 
 Sidebar.propTypes = {
   onSliderChange: PropTypes.func.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
   groupName: PropTypes.string.isRequired,
 };

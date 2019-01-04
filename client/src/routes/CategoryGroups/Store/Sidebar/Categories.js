@@ -16,6 +16,7 @@ const Wrapper = styled.div`
 const Categories = ({ categories, groupName }) => (
   <Wrapper>
     <h3>Categories</h3>
+    <Link to={`/${groupName.toLowerCase()}/`}>All</Link>
     {categories.map(category => (
       <Link key={category._id} to={`/${groupName.toLowerCase()}/${category.name}`}>
         {category.name}

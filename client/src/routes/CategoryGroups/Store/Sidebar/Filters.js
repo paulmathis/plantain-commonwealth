@@ -11,9 +11,12 @@ class Filters extends Component {
 
     this.state = {
       priceRange: [0, 200],
+      search: '',
     };
 
     this.onSliderChange = this.onSliderChange.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSliderChange(value) {
@@ -22,8 +25,23 @@ class Filters extends Component {
     });
   }
 
+  onSearchChange(e) {
+    this.setState({
+      search: e.target.value,
+    });
+  }
+
+  onSubmit(e) {
+    const { onSearchChange } = this.props;
+    const { search } = this.state;
+
+    if (e.key === 'Enter') {
+      onSearchChange(search);
+    }
+  }
+
   render() {
-    const { priceRange } = this.state;
+    const { priceRange, search } = this.state;
     const { onSliderChange } = this.props;
     return (
       <Wrapper>
@@ -45,7 +63,12 @@ class Filters extends Component {
           Range: ${priceRange[0]} - ${priceRange[1]}
         </div>
         <hr />
-        <input placeholder="Search Products..." />
+        <input
+          onKeyPress={this.onSubmit}
+          onChange={this.onSearchChange}
+          value={search}
+          placeholder="Search Products..."
+        />
       </Wrapper>
     );
   }
@@ -53,6 +76,7 @@ class Filters extends Component {
 
 Filters.propTypes = {
   onSliderChange: PropTypes.func.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
 };
 
 export default Filters;

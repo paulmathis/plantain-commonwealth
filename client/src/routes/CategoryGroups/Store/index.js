@@ -29,16 +29,19 @@ export default class Store extends Component {
       range: [0, 200],
       categories: [],
       categoryFilter: '',
+      name: '',
     };
 
     this.onSliderChange = this.onSliderChange.bind(this);
     this.updateProducts = this.updateProducts.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
   }
 
   componentDidMount() {
     // Get list of categories available
     const { group } = this.props;
-    axios(`/api/category_groups/${group}?populate=true`).then(res => {
+    const { name } = this.state;
+    axios(`/api/category_groups/${group}?populate=true&name=${name}`).then(res => {
       const { categories } = res.data;
       this.setState({ categories });
       this.updateProducts();
@@ -63,17 +66,23 @@ export default class Store extends Component {
     );
   }
 
+  onSearchChange(name) {
+    this.setState({ name }, () => {
+      this.updateProducts();
+    });
+  }
+
   static getDerivedStateFromProps(props, state) {
     return getCategoryFilter(props, state);
   }
 
   async updateProducts() {
-    const { range, categoryFilter } = this.state;
+    const { range, categoryFilter, name } = this.state;
     const { group } = this.props;
 
     try {
       const products = await fetchJSON(
-        `/api/products?range=[${range}]&category=${categoryFilter}&group=${group}`
+        `/api/products?range=[${range}]&category=${categoryFilter}&group=${group}&name=${name}`
       );
       this.setState({ products });
     } catch (e) {
@@ -92,6 +101,7 @@ export default class Store extends Component {
             getCategoryFilter={this.getCategoryFilter}
             categories={categories}
             onSliderChange={this.onSliderChange}
+            onSearchChange={this.onSearchChange}
           />
           <Products products={products} />
         </Grid>
