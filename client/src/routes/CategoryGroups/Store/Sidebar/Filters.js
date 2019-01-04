@@ -16,7 +16,8 @@ class Filters extends Component {
 
     this.onSliderChange = this.onSliderChange.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.submit = this.submit.bind(this);
+    this.submitTimer = this.submitTimer.bind(this);
   }
 
   onSliderChange(value) {
@@ -26,18 +27,34 @@ class Filters extends Component {
   }
 
   onSearchChange(e) {
+    this.setState(
+      {
+        search: e.target.value,
+      },
+      () => {
+        this.submitTimer();
+      }
+    );
+  }
+
+  // Set a timer to submit a serach for a name
+  submitTimer() {
+    // eslint-disable-next-line react/destructuring-assignment
+    clearTimeout(this.state.timer);
+
+    const timer = setTimeout(() => {
+      this.submit();
+    }, 400);
+
     this.setState({
-      search: e.target.value,
+      timer,
     });
   }
 
-  onSubmit(e) {
+  submit() {
     const { onSearchChange } = this.props;
     const { search } = this.state;
-
-    if (e.key === 'Enter') {
-      onSearchChange(search);
-    }
+    onSearchChange(search);
   }
 
   render() {
@@ -63,12 +80,7 @@ class Filters extends Component {
           Range: ${priceRange[0]} - ${priceRange[1]}
         </div>
         <hr />
-        <input
-          onKeyPress={this.onSubmit}
-          onChange={this.onSearchChange}
-          value={search}
-          placeholder="Search Products..."
-        />
+        <input onChange={this.onSearchChange} value={search} placeholder="Search Products..." />
       </Wrapper>
     );
   }
