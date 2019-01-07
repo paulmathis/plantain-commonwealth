@@ -71,6 +71,8 @@ const ImmageContainer = styled.div`
 `;
 
 const Wrapper = styled.div`
+  align-self: flex-end;
+
   img {
     width: 100%;
   }

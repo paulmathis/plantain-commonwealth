@@ -21,7 +21,7 @@ export default () => (
     </Col>
     <Col>
       <Category to="/men/jackets" img={jacket} name="Jackets" />
-      <Category to="/accessories/bag" img={bag} name="Bags" />
+      <Category to="/accessories/bags" img={bag} name="Bags" />
     </Col>
   </Grid>
 );

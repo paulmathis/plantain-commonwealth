@@ -52,10 +52,10 @@ export default () => (
     </div>
     <LinkList>
       <h4>Categories</h4>
-      <Link to="/">Men</Link>
-      <Link to="/">Women</Link>
-      <Link to="/">Shoes</Link>
-      <Link to="/">Bags</Link>
+      <Link to="/men">Men</Link>
+      <Link to="/women">Women</Link>
+      <Link to="/shoes">Shoes</Link>
+      <Link to="/accessories/bag">Bags</Link>
     </LinkList>
     <LinkList>
       <h4>Links</h4>
