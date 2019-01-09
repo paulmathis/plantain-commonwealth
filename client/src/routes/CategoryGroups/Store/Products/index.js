@@ -7,7 +7,7 @@ import Top from './Top';
 function Products({ products }) {
   return (
     <Grid>
-      <Top />
+      <Top total={products.length} />
       {products.length === 0 && <h1 className="message">No results found.</h1>}
       {products.map(product => (
         <Product product={product} key={product._id} />

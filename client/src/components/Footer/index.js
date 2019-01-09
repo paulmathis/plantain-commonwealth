@@ -55,7 +55,7 @@ export default () => (
       <Link to="/men">Men</Link>
       <Link to="/women">Women</Link>
       <Link to="/shoes">Shoes</Link>
-      <Link to="/accessories/bag">Bags</Link>
+      <Link to="/accessories/bags">Bags</Link>
     </LinkList>
     <LinkList>
       <h4>Links</h4>

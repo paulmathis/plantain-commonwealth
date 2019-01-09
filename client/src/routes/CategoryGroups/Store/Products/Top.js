@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import PropTypes from 'prop-types';
 
-const Top = styled.div`
+const Wrapper = styled.div`
   grid-column: 1/-1;
   display: flex;
   justify-content: space-between;
@@ -25,13 +26,21 @@ const Top = styled.div`
   }
 `;
 
-export default () => (
-  <Top>
+const Top = ({ total }) => (
+  <Wrapper>
     <select name="" id="">
       <option value="">Popularity</option>
       <option value="">Price: low to high</option>
       <option value="">Price: high to low</option>
     </select>
-    <p>Showing 12 of 100</p>
-  </Top>
+    <p>
+      Showing {total} of {total}
+    </p>
+  </Wrapper>
 );
+
+Top.propTypes = {
+  total: PropTypes.number.isRequired,
+};
+
+export default Top;

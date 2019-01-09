@@ -77,7 +77,7 @@ class Header extends Component {
           {/* <NavItem to="/sale">Sale</NavItem> */}
         </Nav>
         <Accounts>
-          <FontAwesomeIcon icon="user-circle" />
+          {/* <FontAwesomeIcon icon="user-circle" /> */}
           <Shopping>
             <FontAwesomeIcon onClick={this.handleCart} icon="shopping-bag" />
             <span>{itemTotal}</span>

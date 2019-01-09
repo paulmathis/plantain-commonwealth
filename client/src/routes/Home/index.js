@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Hero from '../../components/Hero';
 import Button from '../../components/Button';
 import Container from '../../components/Container';
@@ -11,7 +12,9 @@ export default () => (
     <Hero src={hero}>
       <h2>Women Collection 2018</h2>
       <h1>NEW ARRIVALS</h1>
-      <Button round>Shop Now</Button>
+      <Link to="/women">
+        <Button round>Shop Now</Button>
+      </Link>
     </Hero>
     <Container>
       <Categories />

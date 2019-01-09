@@ -24,7 +24,7 @@ const Product = ({ product, addToCart }) => (
       </Button>
     </ImmageContainer>
     <div>
-      <Link to="/">{product.name}</Link>
+      <p className="product-name">{product.name}</p>
       <p>${product.price}</p>
     </div>
   </Wrapper>
@@ -88,5 +88,14 @@ const Wrapper = styled.div`
     left: 50%;
     transform: translate(-50%, 80px);
     opacity: 0;
+  }
+
+  .product-name {
+    color: ${({ theme }) => theme.grey};
+    text-decoration: none;
+
+    :hover {
+      color: ${({ theme }) => theme.brandPrimary};
+    }
   }
 `;
